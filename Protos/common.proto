@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package dcs;
+
+enum ObjectCategory {
+  DUMMY = 0; // Proto must start at 0 but the category index starts at 1 so add a dummy value
+  UNIT = 1;
+  WEAPON = 2;
+  STATIC = 3;
+  SCENERY = 4;
+  BASE = 5;
+  CARGO = 6;
+}
+
+enum AirbaseCategory {
+  AIRDROME = 0;
+  HELIPAD = 1;
+  SHIP = 2;
+}
+
+enum Coalition {
+  NEUTRAL = 0;
+  RED = 1;
+  BLUE = 2;
+}
+
+message Position {
+  double lat = 1;
+  double lon = 2;
+  double alt = 3; // in meters
+}
+
+// Returned if a sub-type listed below cannot be found
+message Object {
+}
+
+message Unit {
+  string id = 1;
+  string name = 2;
+  string callsign = 3;
+  Coalition coalition = 4;
+  string type = 5;
+  Position position = 6;
+}
+
+message Weapon {
+}
+
+message Static {
+}
+
+message Scenery {
+}
+
+message Airbase {
+  optional string id = 1;
+  string name = 2;
+  string callsign = 3;
+  Coalition coalition = 4;
+  Position position = 6;
+  AirbaseCategory category = 7;
+  string display_name = 8;
+}
+
+message Cargo {
+}
+
+// End of Object subtypes

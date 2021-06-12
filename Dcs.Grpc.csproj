@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Product />
+    <Authors>Jeffrey Jones</Authors>
+    <Company />
+    <Copyright>Copyright © Jeffrey Jones 2021</Copyright>
+    <Description>.Net Client for the DCS-gRPC project.</Description>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/DCS-gRPC/csharp-client</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DCS-gRPC/csharp-client</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.17.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.37.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.38.0-pre1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\*.proto" CompileOutputs="true" AdditionalProtocArguments="--proto_path=Protos\" GrpcServices="Client" />
+  </ItemGroup>
+
+</Project>
